@@ -1,0 +1,16 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block content %}
+<h1>Poll Results</h1>
+<div>
+    {% for question in questions %}
+        <h2>{{ question.question }}</h2>
+        <ul>
+            {% for choice, votes in question.choices.items %}
+                <li>{{ choice }}: {{ votes }} votes</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+</div>
+{% endblock %}

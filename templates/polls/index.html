@@ -1,6 +1,42 @@
-<h1>Polls</h1>
-<ul>
-{% for question in latest_question_list %}
-    <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
-{% endfor %}
-</ul>
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="bg-blue-400 flex items-center justify-center py-4">
+
+        <h1 class=" text-3xl font-bold text-blue-500 bg-white px-5 py-2 rounded-3xl" >My Polls Questioner</h1>
+    </div>
+    
+    <div class="container mx-auto mx-w-5xl py-6">
+        <div class="py-8">
+            <div class="px-4 py-4 -mx-4 overflow-x-auto sm:-mx-8 sm:px-8">
+                <div class="inline-block min-w-full overflow-hidden rounded-lg shadow">
+                    <table class="leading-normal min-w-full divide-y divide-gray-200 dark:divide-neutral-700">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="px-5 py-3 text-md font-medium text-left text-white uppercase bg-blue-400 border-b border-gray-200">
+                                    Share Your Opinion by Answering the Polls Below
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for question in latest_question_list %}
+                            <tr>
+                                <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                                    <a class="text-gray-900 whitespace-no-wrap" href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>
